@@ -16,7 +16,7 @@ const hotMiddleWare = require('webpack-hot-middleware')(compiler);
 app.use(devMiddleWare);
 app.use(hotMiddleWare);
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/dist'));
 
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/', function(req, res) {

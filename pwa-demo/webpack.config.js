@@ -8,7 +8,13 @@ module.exports = {
 		path: path.resolve(__dirname,'./dist'),
 		publicPath: '/',
     filename: '[name].bundle.js'
-  },
+	},
+	devServer: {
+		inline: true,
+		contentBase: './dist',
+		port: 3003,
+		hot: true
+	},
   plugins:[
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
@@ -16,29 +22,18 @@ module.exports = {
       template: path.resolve(__dirname,'./index.html')
     })
 	],
+	devtool: 'inline-source-map',
 	// mode: 'development',
 	watch: true,
-	devServer: { inline: true },
-  resolve:{
-    extensions: ['.js','.vue'],
-    alias:{
-      'vue':'vue/dist/vue.js'
-    }
-  },
   module:{
     rules: [
       {
-        test: /\.css$/,
-        use: [
-          { loader: 'style-loader' },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true
-            }
-          }
-        ]
-      }
+				test: /\.css$/,
+				use: [
+					'style-loader',
+					'css-loader'
+				]
+			},
     ]
   }
 }
