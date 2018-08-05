@@ -9,7 +9,7 @@
 	"theme_color": "#29434d",
 	"icons": [
 		{
-			"src": "./images/icon-144.png",
+			"src": "https://cmngo.github.io/pwa-demo/public/images/icon-144.png",
 			"type": "image/png",
 			"sizes": "144x144"
 		}
