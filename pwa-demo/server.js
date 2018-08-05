@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 // const config = require('./webpack.config.js');
 var app = express();
 
-app.use(express.static('public'));
+app.use(express.static('/'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 // app.use(hotMiddleWare);
 
 // app.use(express.static(__dirname + '/dist'));
-app.use(express.static(path.join(__dirname, '/src')))
+// app.use(express.static(path.join(__dirname, '/src')))
 
 // respond with "hello world" when a GET request is made to the homepage
 // app.get('/', function(req, res) {
