@@ -1,15 +1,15 @@
 //Cache polyfil to support cacheAPI in all browsers
 // importScripts('./cache-polyfill.js');
 
-var cacheName = 'cache-v4';
+var cacheName = 'demo-v1';
 
 //Files to save in cache
 var files = [
   './',
   './index.html?utm=homescreen', //SW treats query string as new request
-  // './css/styles.css',
+  './css/styles.css',
   './images/icon-144.png',
-  // './js/main.js',
+  './js/main.js',
   // './js/app.js',
   './manifest.json'
 ];

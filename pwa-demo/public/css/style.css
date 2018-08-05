@@ -1,0 +1,33 @@
+.item {
+	color: #333;
+	font-size: 14px;
+	vertical-align: bottom;
+	padding: 8px;
+	border-bottom: 1px solid #eee;
+}
+
+.title {
+	width: 84%;
+	display: inline-block;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	vertical-align: middle;
+}
+
+.avatar {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	margin-right: 5px;
+	vertical-align: middle;
+}
+
+ul {
+	-webkit-padding-start: 10px;
+	-webkit-padding-end: 10px;
+}
+
+li {
+	list-style: none;
+}

@@ -14,25 +14,30 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Progressive Web Application">
   <meta name="application-name" content="Progressive Web Application">
-  <link rel="apple-touch-icon" href="./images/icons/apple-touch-icon.png">
+  <!-- <link rel="apple-touch-icon" href="./images/icons/apple-touch-icon.png"> -->
   <!-- <link rel="icon" type="image/png" href="./images/icons/favicon-32x32.png" sizes="32x32">
   <link rel="icon" type="image/png" href="./images/icons/favicon-16x16.png" sizes="16x16"> -->
   <link rel="manifest" href="./manifest.json">
-	<link rel="stylesheet" href="./src/css/style.css">
+	<link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 	<h3>数据缓存</h3>
 	<div>
-		<ul>
-			<li class="title">
-				2222
-			</li>
+		<ul id="fetch-area">
+			<script id="fetch-data" type="text/html">
+				<% for(let i = 0; i< data.length; i++) { %>
+					<li class="item">
+							<img class="avatar" src=<%= data[i].author.avatar_url%> >
+							<span class="title"><%= data[i].title %></span>
+					</li>
+				<% } %>
+			</script>
 		</ul>
 	</div>
 
 	<h3>添加到主屏幕</h3>
 	<div>
-		<div>点击添加到主屏幕</div>
+		<button>点击添加到主屏幕</button>
 	</div>
 
 	<h3>推送通知</h3>
@@ -51,7 +56,7 @@
 	</div>
 
 
-	<script type=”text/javascript” src="./src/libs/ejs.min.js"></script>
-	<script type=”text/javascript” src="./src/js/main.js"></script>
+	<script src="./libs/ejs.min.js"></script>
+	<script src="./js/main.js"></script>
 </body>
 </html>
