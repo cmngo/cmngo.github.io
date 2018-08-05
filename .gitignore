@@ -1,4 +1,14 @@
-node_modules
+logs/
 npm-debug.log
+node_modules/
+coverage/
+.idea/
+run/
 .DS_Store
-/*.env
+*.swp
+dist/
+*.tgz
+*.tar
+*.tar.gz
+*.zip
+.vscode/
