@@ -1,6 +1,6 @@
 // 注册Sw
 if ("serviceWorker" in navigator) {
-	navigator.serviceWorker.register('/public/sw.js') //setting scope of sw
+	navigator.serviceWorker.register('https://cmngo.github.io/pwa-demo/public/sw.js') //setting scope of sw
 	.then(function(registration) {
 		console.info('Service worker is registered!');
 		// checkForPageUpdate(registration); // To check if new content is updated or not
