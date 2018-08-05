@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 // const config = require('./webpack.config.js');
 var app = express();
 
-app.use(express.static('/'));
+app.use(express.static('./'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 

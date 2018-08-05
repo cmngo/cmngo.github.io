@@ -37,3 +37,27 @@ fetch(url, { method: 'GET' })
 			// spinnerElement.classList.remove('show'); //hide spinner
 			console.error(error);
 		});
+
+// 点击显示添加到屏幕
+let savePrompt = null;
+window.addEventListener('beforeinstallprompt', function(e) {
+	e.preventDefault();
+	savePrompt = e;
+	return false;
+})
+const add2HomeBtn = document.getElementById('add-to-homescreen');
+add2HomeBtn.addEventListener('click',function(){
+	if(savePrompt) {
+		savePrompt.prompt();
+
+		savePrompt.userChoice.then(function(result) {
+			if(result.outcome === 'dismissed') {
+				alert('user dismissed');
+			}else {
+				alert('user accept!')
+			}
+
+			savePrompt = null;
+		})
+	}
+})
