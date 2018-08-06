@@ -23,6 +23,16 @@
 	vertical-align: middle;
 }
 
+button {
+	background: skyblue;
+	border-color:transparent;
+	border-radius: 4px;
+	font-size: 14px;
+	color: #fff;
+	height: 30px;
+
+}
+
 ul {
 	-webkit-padding-start: 10px;
 	-webkit-padding-end: 10px;
@@ -30,4 +40,24 @@ ul {
 
 li {
 	list-style: none;
+}
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+#network-msg {
+	background: #333;
+	color: #fff;
+	text-align: center;
+	line-height: 40px;
+	height: 40px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
 }

@@ -11,17 +11,16 @@ if ("serviceWorker" in navigator) {
 }
 
 // 数据fetch 以及 缓存
-const url = 'https://cnodejs.org/api/v1/topics?page=1&limit=5&tab=share' ;
+const url = 'https://cnodejs.org/api/v1/topics?page=1&limit=3';
+// const url = 'https://news-at.zhihu.com/api/2/news/latest';
 let dataSource = [];
 fetch(url, { method: 'GET' })
 	.then(function(fetchResponse){ return fetchResponse.json() })
 		.then(function(response) {
-			console.log('response: ', response);
 			const {success,data} = response;
 			if(success) {
 				dataSource = data;
 				const temp = document.getElementById('fetch-data').innerHTML;
-				// const html = ejs.render('<%= people.join(", "); %>', {people: people});
 				const html = ejs.render(temp,{data:data});
 				document.getElementById('fetch-area').innerHTML = html;
 			}
@@ -41,10 +40,12 @@ fetch(url, { method: 'GET' })
 // 点击显示添加到屏幕
 let savePrompt = null;
 window.addEventListener('beforeinstallprompt', function(e) {
+	console.log('beforeinstallprompt');
 	e.preventDefault();
 	savePrompt = e;
 	return false;
-})
+});
+
 const add2HomeBtn = document.getElementById('add-to-homescreen');
 add2HomeBtn.addEventListener('click',function(){
 	console.log('click');
@@ -61,4 +62,19 @@ add2HomeBtn.addEventListener('click',function(){
 			savePrompt = null;
 		})
 	}
+});
+
+//离线提示
+const networkMsg = document.getElementById('network-msg')
+window.addEventListener('online',function(){
+	networkMsg.innerHTML = 'you are currently online!';
+	networkMsg.className = 'show';
+	setTimeout(function(){
+		networkMsg.className = 'hide';
+	},2000)
+})
+
+window.addEventListener('offline',function(){
+	networkMsg.innerHTML = 'you are currently offline!'
+	networkMsg.className = 'show';
 })
