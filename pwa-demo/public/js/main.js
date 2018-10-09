@@ -135,7 +135,7 @@ window.addEventListener('offline',function(){
 		 .then(function (subscription) {
 			 console.info('Subscribed successfully,Push notification subscribed.');
 			 changePushStatus(true);
-			 sendPushNotification();
+			//  sendPushNotification();
 		 })
 		 .catch(function (error) {
 			 changePushStatus(false);
@@ -201,27 +201,27 @@ window.addEventListener('offline',function(){
  });
 
  //Form data with info to send to server
- function sendPushNotification() {
-	 console.log('enter sendPushNotification')
-	 navigator.serviceWorker.ready
-		 .then(function(registration) {
-			 //Get `push subscription`
-			 registration.pushManager.getSubscription().then(function (subscription) {
-				 //Send `push notification` - source for below url `server.js`
-				 fetch('https://progressive-web-application.herokuapp.com/send_notification', {
-					 method: 'post',
-					 headers: {
-						 'Accept': 'application/json',
-						 'Content-Type': 'application/json'
-					 },
-					 body: JSON.stringify(subscription)
-				 })
-				 .then(function(response) {
-					 return response.json();
-				 })
-			 })
-		 })
- }
+//  function sendPushNotification() {
+// 	 console.log('enter sendPushNotification')
+// 	 navigator.serviceWorker.ready
+// 		 .then(function(registration) {
+// 			 //Get `push subscription`
+// 			 registration.pushManager.getSubscription().then(function (subscription) {
+// 				 //Send `push notification` - source for below url `server.js`
+// 				 fetch('https://progressive-web-application.herokuapp.com/send_notification', {
+// 					 method: 'post',
+// 					 headers: {
+// 						 'Accept': 'application/json',
+// 						 'Content-Type': 'application/json'
+// 					 },
+// 					 body: JSON.stringify(subscription)
+// 				 })
+// 				 .then(function(response) {
+// 					 return response.json();
+// 				 })
+// 			 })
+// 		 })
+//  }
 
  isPushSupported(); //Check for push notification support
 
