@@ -133,14 +133,11 @@ window.addEventListener('offline',function(){
 			 userVisibleOnly: true //Always show notification when received
 		 })
 		 .then(function (subscription) {
-			 console.log(111111)
-			 toast('Subscribed successfully.');
-			 console.info('Push notification subscribed.');
+			 console.info('Subscribed successfully,Push notification subscribed.');
 			 changePushStatus(true);
 			 sendPushNotification();
 		 })
 		 .catch(function (error) {
-			 console.log(222222)
 			 changePushStatus(false);
 			 console.error('Push notification subscription error: ', error);
 		 });
@@ -163,8 +160,7 @@ window.addEventListener('offline',function(){
 			 //Unsubscribe `push notification`
 			 subscription.unsubscribe()
 				 .then(function () {
-					 toast('Unsubscribed successfully.');
-					 console.info('Push notification unsubscribed.');
+					 console.info('Unsubscribed successfully,Push notification unsubscribed.');
 					 changePushStatus(false);
 				 })
 				 .catch(function (error) {
