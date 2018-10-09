@@ -1,6 +1,6 @@
 // 注册Sw
 if ("serviceWorker" in navigator) {
-	navigator.serviceWorker.register('public/sw.js') //setting scope of sw
+	navigator.serviceWorker.register('../../sw.js') //setting scope of sw
 	.then(function(registration) {
 		console.info('Service worker is registered!');
 		// checkForPageUpdate(registration); // To check if new content is updated or not
@@ -39,10 +39,11 @@ fetch(url, { method: 'GET' })
 // 点击显示添加到屏幕
 let savePrompt = null;
 window.addEventListener('beforeinstallprompt', function(e) {
+	// 阻止添加到主屏幕的默认事件
 	console.log('beforeinstallprompt');
 	e.preventDefault();
 	savePrompt = e;
-	return false;
+	return false;	
 });
 
 const add2HomeBtn = document.getElementById('add-to-homescreen');
@@ -119,7 +120,9 @@ window.addEventListener('offline',function(){
 
  //To subscribe `push notification`
  function subscribePush() {
+	 console.log('enter subscribePush');
 	 navigator.serviceWorker.ready.then(function(registration) {
+		 console.log('navigator.serviceWorker.ready==');
 		 if (!registration.pushManager) {
 			 alert('Your browser doesn\'t support push notification.');
 			 return false;
@@ -192,7 +195,6 @@ window.addEventListener('offline',function(){
 
  //Click event for subscribe push
  webPushBtn.addEventListener('click', function () {
-	 
 	 var isSubscribed = (webPushBtn.dataset.checked === 'true');
 	 console.log('isSubscribed: ', isSubscribed);
 	 if (isSubscribed) {
