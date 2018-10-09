@@ -12,7 +12,6 @@ if ("serviceWorker" in navigator) {
 
 // 数据fetch 以及 缓存
 const url = 'https://cnodejs.org/api/v1/topics?page=1&limit=3';
-// const url = 'https://news-at.zhihu.com/api/2/news/latest';
 let dataSource = [];
 fetch(url, { method: 'GET' })
 	.then(function(fetchResponse){ return fetchResponse.json() })
@@ -48,7 +47,7 @@ window.addEventListener('beforeinstallprompt', function(e) {
 
 const add2HomeBtn = document.getElementById('add-to-homescreen');
 add2HomeBtn.addEventListener('click',function(){
-	console.log('click');
+	console.log('添加到主屏幕');
 	if(savePrompt) {
 		savePrompt.prompt();
 
@@ -64,10 +63,10 @@ add2HomeBtn.addEventListener('click',function(){
 	}
 });
 
-//离线提示
+//离线or上线提示
 const networkMsg = document.getElementById('network-msg')
 window.addEventListener('online',function(){
-	networkMsg.innerHTML = 'you are currently online!';
+	networkMsg.innerHTML = 'App are currently online!';
 	networkMsg.className = 'show';
 	setTimeout(function(){
 		networkMsg.className = 'hide';
@@ -75,6 +74,28 @@ window.addEventListener('online',function(){
 })
 
 window.addEventListener('offline',function(){
-	networkMsg.innerHTML = 'you are currently offline!'
+	networkMsg.innerHTML = 'App are currently offline!'
 	networkMsg.className = 'show';
 })
+
+
+// web分享
+const shareBtn = document.getElementById('web-share');
+if (navigator.share !== undefined) {
+shareBtn.addEventListener('click', function(event) {
+	//Web share API
+	navigator.share({
+		title: '我是分享的内容',
+		text: 'A simple pwa which works in offline, add to home screen and has a splash screen, push notifications, bg sync etc',
+		url: window.location.href
+	})
+	.then(function() {
+		console.info('Shared successfully.');
+	})
+	.catch(function (error) {
+		console.error('Error in sharing: ', error);
+	})
+});
+} else {
+	console.error('Not support web share!');
+}
