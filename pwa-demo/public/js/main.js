@@ -54,9 +54,9 @@ add2HomeBtn.addEventListener('click',function(){
 
 		savePrompt.userChoice.then(function(result) {
 			if(result.outcome === 'dismissed') {
-				alert('user dismissed');
+				alert('用户拒绝了');
 			}else {
-				alert('user accept!')
+				alert('用户接受了!')
 			}
 
 			savePrompt = null;
@@ -122,14 +122,13 @@ window.addEventListener('offline',function(){
  function subscribePush() {
 	 console.log('enter subscribePush');
 	 navigator.serviceWorker.ready.then(function(registration) {
-		 console.log('navigator.serviceWorker.ready==');
+		 console.log('navigator.serviceWorker.ready');
 		 if (!registration.pushManager) {
 			 alert('Your browser doesn\'t support push notification.');
 			 return false;
 		 }
 
 		 //To subscribe `push notification` from push manager
-		 console.log('registration.pushManager.subscribe: ', registration.pushManager.subscribe);
 		 registration.pushManager.subscribe({
 			 userVisibleOnly: true //Always show notification when received
 		 })
@@ -207,6 +206,7 @@ window.addEventListener('offline',function(){
 
  //Form data with info to send to server
  function sendPushNotification() {
+	 console.log('enter sendPushNotification')
 	 navigator.serviceWorker.ready
 		 .then(function(registration) {
 			 //Get `push subscription`
