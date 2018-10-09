@@ -81,21 +81,23 @@ window.addEventListener('offline',function(){
 
 // web分享
 const shareBtn = document.getElementById('web-share');
+console.log('shareBtn: ', shareBtn);
 if (navigator.share !== undefined) {
-shareBtn.addEventListener('click', function(event) {
-	//Web share API
-	navigator.share({
-		title: '我是分享的内容',
-		text: 'A simple pwa which works in offline, add to home screen and has a splash screen, push notifications, bg sync etc',
-		url: window.location.href
-	})
-	.then(function() {
-		console.info('Shared successfully.');
-	})
-	.catch(function (error) {
-		console.error('Error in sharing: ', error);
-	})
-});
+	shareBtn.addEventListener('click', function(event) {
+		console.log('shareBtn click！');
+		//Web share API
+		navigator.share({
+			title: '我是分享的内容',
+			text: 'A simple pwa which works in offline, add to home screen and has a splash screen, push notifications, bg sync etc',
+			url: window.location.href
+		})
+		.then(function() {
+			console.info('Shared successfully.');
+		})
+		.catch(function (error) {
+			console.error('Error in sharing: ', error);
+		})
+	});
 } else {
 	console.error('Not support web share!');
 }
